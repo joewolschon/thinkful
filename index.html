@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <script type="text/javascript" src="assets/calculator.js"></script>
+    <link rel="stylesheet" href="assets/calculator.css"/>
+</head>
+<body>
+<header></header>
+<div class="content">
+    <h1>Adder/Subtractor</h1>
+
+    <div>X = <input placeholder="Enter an Integer" id="x" type="text"></div>
+    <div>Y = <input placeholder="Enter an Integer" id="y" type="text"/></div>
+    <div>
+        <input type="button" value="+" onclick="add(parseInt(document.getElementById('x').value), parseInt(document.getElementById('y').value));"/>
+        <input type="button" value="-" onclick="subtract(parseInt(document.getElementById('x').value), parseInt(document.getElementById('y').value));"/>
+    </div>
+    <div class="result">
+        <label id="result">X minus /plus Y is Z</label>
+    </div>
+</div>
+</body>
+</html>
