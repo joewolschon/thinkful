@@ -6,12 +6,12 @@ angular.module('app', []).controller('MadLibsCtrl', function ($scope)
         "female": createWordMap("she", "her", "her")
     };
 
-    function createWordMap(pronoun, noun, posessive)
+    function createWordMap(pronoun, noun, possessive)
     {
         return {
             pronoun: pronoun,
             noun: noun,
-            possessive: posessive
+            possessive: possessive
         }
     }
 });
