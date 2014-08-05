@@ -1,0 +1,16 @@
+div{
+
+ text-align:center;
+}
+div table{
+	width:80%;
+	border-collapse:collapse;
+
+}
+
+div td{
+	border:solid;
+	/*border-right:solid;*/
+	/*border-top:solid;*/
+	/*border-bottom:solid;*/
+}
