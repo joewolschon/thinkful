@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <link rel="stylesheet" href="assets/css/calc.css"/>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>Waitstaff Calculator</h1>
+<div ng-controller="CalculatorCtrl" ng-init="reset()">
+
+  <form ng-submit="submit()">
+    <div class="content" style="float:left">
+
+      <table>
+        <tr><td class="title" colspan="2" align="center"><span>Enter the Meal Details</span></td></tr>
+        <tr><td align="right">Base Meal Price: $</td><td><input type="text" ng-model="mealDetails.baseMealPrice"/></td></tr>
+        <tr><td align="right">Tax Rate: %</td><td><input type="text" ng-model="mealDetails.taxRate"/></td></tr>
+        <tr><td align="right">Tip Percentage: %</td><td><input type="text" ng-model="mealDetails.tipPercentage"/></td></tr>
+        <tr><td align="right"><input type="submit"/></td><td style="float:left"><input value="Cancel" type="button" ng-click="clearMealDetails()"/></td></tr>
+      </table>
+      <div>{{mealDetails.error}}</div>
+    </div>
+    <div  style="float:right">
+      <div class="content">
+        <span class="title">Customer Charge</span>
+        <div>Subtotal: {{totals.subTotal | currency}}</div>
+        <div>Tip: {{totals.tip | currency}}</div>
+        <div>Total: {{totals.total | currency}}</div>
+      </div>
+      <div class="content">
+        <span class="title">My Earnings Info</span>
+        <div>Tip Total: {{totals.tipTotal | currency}}</div>
+        <div>Meal Count: {{totals.mealCount}}</div>
+        <div>Average Tip Per Meal: {{totals.averageTipPerMeal | currency}}</div>
+      </div>
+    </div>
+  </form>
+</div>
+  <button ng-click="reset()">Reset</button>
+</div>
+</body>
+<footer>
+  <script src="../../global/assets/js/angular.min.js" type="text/javascript"></script>
+  <script src="assets/js/controller.js" type="text/javascript"></script>
+</footer>
+</html>

@@ -1,0 +1,14 @@
+.title{
+	font-size:15px;
+	border-bottom:solid;
+}
+.content{
+	border:2px solid;
+	margin: 25px;
+}
+[type=text] {
+	align-content:stretch;
+}
+input[type=button],input[type=submit] {
+	float: right;
+}
