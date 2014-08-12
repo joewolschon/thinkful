@@ -12,3 +12,7 @@
 input[type=button],input[type=submit] {
 	float: right;
 }
+
+input.ng-invalid.ng-dirty {
+  border-color: red;
+}
