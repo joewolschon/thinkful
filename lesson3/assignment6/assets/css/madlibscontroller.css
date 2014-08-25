@@ -1,0 +1,50 @@
+div{
+	text-align:center;
+}
+
+div table{
+	width:80%;
+	border-collapse:collapse;
+}
+
+.container{
+	border:solid;
+}
+
+.words{
+	margin:10%;
+}
+
+.content{
+	margin-top:5%;
+	margin-bottom:5%;
+	border:solid;
+}
+
+body{
+	font-family:"Comic Sans MS";
+}
+
+p{
+	text-align:left;
+	margin:3%;
+}
+input.ng-invalid.ng-dirty {
+  border-color: red;
+}
+img{
+	max-height:40%;
+	max-width:40%;
+}
+
+form table {
+    border-bottom: solid;
+}
+
+form div {
+    margin-top:2%;
+    margin-bottom:2%;
+}
+div span {
+    margin-left: 60%;
+}
