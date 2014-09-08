@@ -72,7 +72,7 @@
           <span ng-show="showMadLib" class="zoom">{{model.celebrity ||'{\{celebrity}\}'}}</span> who told {{words[model.gender].noun}} to learn how to
           <span ng-show="showMadLib" class="zoom">{{model.uselessSkill || '{\{useless skill}\}'}}</span> with Thinkful. Thinkful didn't offer a course on
           <span ng-show="showMadLib" class="zoom">{{model.uselessSkill || '{\{useless skill}\}'}}</span> so
-          <span ng-show="showMadLib" class="zoom">{{words[model.gender].pronoun}}</span> studied programming instead.
+          {{words[model.gender].pronoun}} studied programming instead.
 
         <p>What a great decision! With {{words[model.gender].possessive}} new skills,
           <span ng-show="showMadLib" class="zoom">{{model.maleName || '{\{'+gender+'name}\}'}}</span> built a(n)
