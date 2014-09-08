@@ -6,7 +6,7 @@ angular.module('app', []).controller('MadLibsCtrl', function ($scope)
     {
        $scope.model = {gender: 'male'};
        $scope.form.$setPristine();
-    }
+    };
 
     $scope.words = {
         'male': {pronoun: 'he', noun: 'him', possessive: 'his'},
