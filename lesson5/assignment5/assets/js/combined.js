@@ -1,43 +1,29 @@
 angular.module('app', ['ngResource']);
 angular.module('app').controller('InstagramSearcherCtrl', function ($scope, instagram, $log) {
 
-  $scope.max = [1,1,1,1];
-
-  $scope.search = '';
-
+  $scope.search = undefined;
+  $scope.lastSearch = undefined;
+  $scope.searching = undefined;
   $scope.results = undefined;
 
   $scope.submit = function () {
-
-    var search = $scope.search;
-    $scope.search = '';
+    $scope.results = undefined;
+    $scope.lastSearch = $scope.search;
+    $scope.search = undefined;
     $scope.searching = true;
 
-    instagram.search(search).then(function (response) {
+    instagram.search($scope.lastSearch).then(function (response) {
       $log.log(response);
 
       $scope.results = response.data;
-
-    }).finally(function (data) {
-      $log.log('finally', data);
+    }).finally(function () {
       $scope.searching = false;
     });
-//    $http.jsonp('https://api.instagram.com/v1/tags/search', {
-//      method: 'GET',
-//      params: {
-//        client_id: '749d8265ce234c198ed79664225b0660',
-//        callback: 'JSON_CALLBACK',
-//        q: $scope.search
-//      }
-//    }).success(function (data) {
-//      $log.log('success', data);
-//    }).error(function (data) {
-//      $log.log('error', data);
-//    });
+
   };
 
 });
-angular.module('app').directive('display', function ($log, $compile, $sce) {
+angular.module('app').directive('display', function ($log) {
 
   return {
     scope: {
@@ -45,87 +31,21 @@ angular.module('app').directive('display', function ($log, $compile, $sce) {
     },
     restrict: 'A',
     link: function (scope, elem) {
-      var display = angular.element('<table></table>');
 
+      var element = '<table>';
 
-//      display.append(tr);
-//      $log.log($compile(display));
-      $log.log('data', scope.results);
-//      $sce.trustAsResourceUrl("http://scontent-a.cdninstagram.com/hphotos-xfp1/t51.2885-15/10547317_594503763988724_1443258421_s.jpg");
-      var r = scope.results;
-      var e = '<table width="100%">';
-      var count = 0;
-      for (var row = 0; row < 5; row++) {
-        var t = '';
-//        var test = '<td>*</td>';
-//        var row = angular.element('<tr></tr>');
-        for (var col = 0; col < row; col++) {
-          var index = ((row * 4) + col);
-         // $log.log('index', count);
-          var im = (r, (count));
-          if (im !== null) {
-            t = t + '<td>' + image(r, (count)) + '</td>';
-          }
-          count = count + 1;
+      $log.log(scope.results);
+      for (var index = 0; index < 20; index++) {
+        if (index <= scope.results.length - 1) {
+          element = element + '<tr><td><img src=\"' + scope.results[index].images.thumbnail.url + '\"/></td></tr>';
         }
-        t = t + '</tr>';
-        e = e + t;
-
-        t = '<tr><td>*</td>';
       }
+      element = element + '</table>';
+      $log.log(element);
+      elem.append(element);
 
-      for (var row = 5; row > 0; row--) {
-        var t = '';
-//        var test = '<td>*</td>';
-//        var row = angular.element('<tr></tr>');
-        for (var col = 0; col < row; col++) {
-          var index = ((row * 4) + col);
-         // $log.log('index', count);
-          var im = (r, (count));
-          if (im !== null) {
-            t = t + '<td>' + image(r, (count)) + '</td>';
-          }
-          count = count + 1;
-        }
-        t = t + '</tr>';
-        e = e + t;
-
-        t = '<tr><td>*</td>';
-      }
-
-      e = e + '</table>';
-      $log.log(e);
-      var test = angular.element(e);
-//      $compile(test);
-      elem.append(test);
-//      $compile(elem);
-    },
-    replace: true
-  };
-
-  function image(results, index) {
-    $log.log(index, results.length);
-    if (index <= results.length - 1 && index < 20) {
-      $log.log(index);
-//    var url = "http://scontent-a.cdninstagram.com/hphotos-xfp1/t51.2885-15/10547317_594503763988724_1443258421_s.jpg";
-      var url = results[index].images.thumbnail.url;
-      return '<img src=\"' + url + '\"/>';
     }
-    return null;
-  }
-
-});
-angular.module('app').directive('pic', function ($log) {
-
-  return {
-    scope: {},
-    restrict: 'E',
-    template: '<td><img ng-src=""/></td>',
-    link: function (scope, element, attrs) {
-      $log.log(attrs,'test');
-    },
-    replace: true
-  }
+  };
 
 });
 angular.module('app').service('instagram', function ($resource) {
