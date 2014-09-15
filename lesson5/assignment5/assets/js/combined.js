@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource']);
+angular.module('app', ['ngResource', 'ngAnimate']);
 angular.module('app').controller('InstagramSearcherCtrl', function ($scope, instagram, $log) {
 
   $scope.search = undefined;
