@@ -14,7 +14,7 @@
   <div>
     <input placeholder="search" autofocus ng-model="search" type="text"/>
     <input type="submit" value="submit"/>
-    <span ng-if="searching == true">searching</span>
+    <span class="text" ng-if="searching == true">searching</span>
     <span class="text" ng-if="results">{{results.length}} results for '{{lastSearch}}'</span>
   </div>
   <div>
