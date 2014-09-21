@@ -1,0 +1,19 @@
+<div class="center content" ng-init="init()">
+    <div class="contentTitle">My Earnings for This Shift</div>
+    <div>
+        <table>
+            <tr>
+                <td>Tip Total: {{tipTotal | currency}}</td>
+            </tr>
+            <tr>
+                <td>Meal Count: {{mealCount}}</td>
+            </tr>
+            <tr>
+                <td>Average Tip Per Meal: {{tipAverage | currency}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="center space">
+    <input ng-click="reset()" type="button" value="Reset">
+</div>

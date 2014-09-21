@@ -1,0 +1,41 @@
+<div class="center content">
+    <div class="contentTitle">Enter the Meal Details</div>
+    <div>
+        <form name="form" ng-submit="submit()">
+            <table>
+                <tr>
+                    <td><label class="right">Base Meal Price: $</label></td>
+                    <td><input required ng-model="mealDetails.base" class="left" type="number"/></td>
+                </tr>
+                <tr>
+                    <td><label class="right">Tax Rate: %</label></td>
+                    <td><input ng-model="mealDetails.tax" class="left" type="number"/></td>
+                </tr>
+                <tr>
+                    <td><label class="right">Tip Percent: %</label></td>
+                    <td><input ng-model="mealDetails.tip" class="left" type="number"/></td>
+                </tr>
+            </table>
+            <div class="center space">
+                <input type="submit" value="Submit">
+                <input ng-click="cancel()" type="button" value="Cancel">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="center content">
+    <div class="contentTitle">Customer Charges</div>
+    <div>
+        <table>
+            <tr>
+                <td>Subtotal {{customerCharges.subTotal | currency}}</td>
+            </tr>
+            <tr>
+                <td>Tip {{customerCharges.tip | currency}}</td>
+            </tr>
+            <tr>
+                <td>Total {{customerCharges.total | currency}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <script src="../../../global/assets/js/angular.min.js" type="text/javascript"></script>
+    <script src="../../../global/assets/js/angular-animate.min.js" type="text/javascript"></script>
+    <script src="assets/js/madlibscontroller.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="assets/css/madlibscontroller.css"/>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div ng-controller="MadLibsCtrl">
+    <table class="content" align="center">
+        <tr>
+            <td class="content"><img src="assets/images/mad-lib-happy-face.png"></td>
+            <td width="80%" class="content"><img src="assets/images/ng-mad-libs-logo.png">
+
+                <div style="font-size:50px">Automate This!</div>
+            </td>
+        </tr>
+        <tr ng-show="!showMadLib">
+            <td class="content" colspan="2">
+                <!--Originally had ng-submit="validSubmit = form.$valid". Visibility too low/too hard to test? -->
+                <form name="form" ng-submit="generateMadLib()" novalidate>
+                    <table align="center" ng-init="init()">
+                        <tr>
+                            <td><h3>Provide the following words:</h3></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Gender:
+                                <input ng-model="model.gender" value="male" name="model.gender"
+                                       type="radio">Male</input>
+                                <input ng-model="model.gender" value="female" name="model.gender"
+                                       type="radio">Female</input></td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" ng-model="model.maleName"
+                                       placeholder="{{model.gender}} name"/></td>
+                            <td><input required type="text" ng-model="model.jobTitle" placeholder="job title"/></td>
+                            <td><input required type="text" ng-model="model.tediousTask" placeholder="tedious task"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" ng-model="model.dirtyTask" placeholder="dirty task"/></td>
+                            <td><input required type="text" ng-model="model.celebrity" placeholder="celebrity"/></td>
+                            <td><input required type="text" ng-model="model.uselessSkill" placeholder="useless skill"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" ng-model="model.obnoxiousCelebrity"
+                                       placeholder="obnoxious celebrity"/>
+                            </td>
+                            <td><input required type="number" ng-model="model.hugeNumber" placeholder="huge number"/>
+                            </td>
+                            <td><input required type="text" ng-model="model.adjective" placeholder="adjective"/></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <div ng-show="showMadLib == false" class="invalid">All inputs are required</div>
+                        <span><input value="Generate My MadLib!" type="submit"/></span>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        <tr ng-show="showMadLib">
+            <td class="content madlib" colspan="2">
+                <p>
+                    <span ng-show="showMadLib" class="zoom">{{model.maleName || '{\{'+model.gender+' name}\}'}}</span>
+                    was a
+                    <span ng-show="showMadLib" class="zoom">{{model.jobTitle || '{\{job title}\}'}}</span> who loved
+                    cows. Although {{words[model.gender].pronoun}} loves cows a lot, {{words[model.gender].pronoun}}
+                    loves
+                    <span ng-show="showMadLib" class="zoom">{{model.tediousTask || '{\{tedious task}\}'}}</span> and
+                    <span ng-show="showMadLib" class="zoom">{{model.dirtyTask || '{\{dirty task}\}'}}</span> even more.
+                    So,
+                    <span ng-show="showMadLib" class="zoom">{{model.maleName ||'{\{'+model.gender+' name}\}'}}</span>
+                    met with {{words[model.gender].possessive}} favorite cow
+                    <span ng-show="showMadLib" class="zoom">{{model.celebrity ||'{\{celebrity}\}'}}</span> who told
+                    {{words[model.gender].noun}} to learn how to
+                    <span ng-show="showMadLib" class="zoom">{{model.uselessSkill || '{\{useless skill}\}'}}</span> with
+                    Thinkful. Thinkful didn't offer a course on
+                    <span ng-show="showMadLib" class="zoom">{{model.uselessSkill || '{\{useless skill}\}'}}</span> so
+                    {{words[model.gender].pronoun}} studied programming instead.
+
+                <p>What a great decision! With {{words[model.gender].possessive}} new skills,
+                    <span ng-show="showMadLib" class="zoom">{{model.maleName || '{\{'+gender+'name}\}'}}</span> built
+                    a(n)
+                    <span ng-show="showMadLib" class="zoom">{{model.adjective || '{\{adjective}\}'}}</span> robot named
+                    <span ng-show="showMadLib"
+                          class="zoom">{{model.obnoxiousCelebrity || '{\{obnoxious celebrity}\}'}}</span> that not only
+                    loved
+                    <span ng-show="showMadLib" class="zoom">{{model.dirtyTask || '{\{dirty task}\}'}}</span> as well but
+                    did it
+                    <span ng-show="showMadLib" class="zoom">{{model.hugeNumber || '{\huge number}\}'}}</span> faster.
+
+                <div><input ng-click="init()" value="Start Over" type="button"/></div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

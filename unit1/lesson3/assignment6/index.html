@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <script src="../../../global/assets/js/angular.min.js" type="text/javascript"></script>
+    <script src="assets/js/madlibscontroller.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="assets/css/madlibscontroller.css"/>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div ng-controller="MadLibsCtrl">
+    <table class="content" align="center">
+        <tr>
+            <td class="container"><img src="assets/images/mad-lib-happy-face.png"></td>
+            <td width="80%" class="container"><img src="assets/images/ng-mad-libs-logo.png">
+
+                <div style="font-size:50px">Automate This!</div>
+            </td>
+        </tr>
+        <tr ng-show="!validSubmit">
+            <td class="container" colspan="2">
+                <form name="form" ng-submit="validSubmit = form.$valid" novalidate>
+                    <table align="center" ng-init="init()">
+                        <tr>
+                            <td><h3>Provide the following words:</h3></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Gender:
+                                <input ng-model="model.gender" value="male" name="model.gender"
+                                       type="radio">Male</input>
+                                <input ng-model="model.gender" value="female" name="model.gender"
+                                       type="radio">Female</input></td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" ng-model="model.maleName"
+                                       placeholder="{{model.gender}} name"/></td>
+                            <td><input required type="text" ng-model="model.jobTitle" placeholder="job title"/></td>
+                            <td><input required type="text" ng-model="model.tediousTask" placeholder="tedious task"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" ng-model="model.dirtyTask" placeholder="dirty task"/></td>
+                            <td><input required type="text" ng-model="model.celebrity" placeholder="celebrity"/></td>
+                            <td><input required type="text" ng-model="model.uselessSkill" placeholder="useless skill"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" ng-model="model.obnoxiousCelebrity"
+                                       placeholder="obnoxious celebrity"/>
+                            </td>
+                            <td><input required type="number" ng-model="model.hugeNumber" placeholder="huge number"/>
+                            </td>
+                            <td><input required type="text" ng-model="model.adjective" placeholder="adjective"/></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <span><input value="Generate My MadLib!" type="submit"/></span>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        <tr ng-show="validSubmit">
+            <td class="container" colspan="2">
+                <p>{{model.maleName || '{\{'+model.gender+' name}\}'}} was a {{model.jobTitle || '{\{job title}\}'}} who
+                    loved cows.
+                    Although {{words[model.gender].pronoun}} loves cows a lot, {{words[model.gender].pronoun}} loves
+                    {{model.tediousTask
+                    || '{\{tedious task}\}'}} and {{model.dirtyTask || '{\{dirty task}\}'}} even more. So,
+                    {{model.maleName ||
+                    '{\{'+model.gender+' name}\}'}} met with {{words[model.gender].possessive}} favorite cow
+                    {{model.celebrity ||
+                    '{\{celebrity}\}'}} who told {{words[model.gender].noun}} to learn how to {{model.uselessSkill ||
+                    '{\{useless
+                    skill}\}'}} with Thinkful. Thinkful didn't offer a course on {{model.uselessSkill || '{\{useless
+                    skill}\}'}} so {{words[model.gender].pronoun}} studied programming instead.
+
+                <p>What a great decision! With {{words[model.gender].possessive}} new skills, {{model.maleName ||
+                    '{\{'+gender+'
+                    name}\}'}} built a(n) {{model.adjective || '{\{adjective}\}'}} robot named
+                    {{model.obnoxiousCelebrity ||
+                    '{\{obnoxious celebrity}\}'}} that not only loved {{model.dirtyTask || '{\{dirty task}\}'}} as well
+                    but
+                    did it {{model.hugeNumber || '{\huge number}\}'}} faster.
+            </td>
+        </tr>
+        <tr ng-show="validSubmit">
+            <td><input ng-click="init()" value="Start Over" type="button"/></td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

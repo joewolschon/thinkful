@@ -1,0 +1,59 @@
+div table {
+    text-align: center;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.words {
+    margin: 10%;
+}
+
+.content {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border: solid;
+    font-family: "Comic Sans MS";
+}
+
+p {
+    text-align: left;
+    margin: 3%;
+}
+
+input[type="button"], input[type="submit"] {
+    margin: 3%;
+    float: right;
+}
+
+input.ng-invalid.ng-dirty {
+    border-color: red;
+}
+
+.invalid {
+    color: red;
+}
+
+img {
+    max-height: 40%;
+    max-width: 40%;
+}
+
+.madlib span {
+    font-weight: bold;
+}
+
+.zoom.ng-hide-remove-stagger {
+    -webkit-animation-delay: 0.1s;
+    -webkit-animation-duration: 0;
+}
+
+.zoom.ng-hide-remove {
+    -webkit-animation: .6s zoom;
+}
+
+@-webkit-keyframes zoom {
+    0% {
+        transform: scale(10);
+    }
+}
+
