@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="waitstaff">
 <head>
+    <link rel="stylesheet" href="./waitstaff.css"/>
     <meta charset="UTF-8">
     <title>Waiter Earning Calculator</title>
 </head>
@@ -9,12 +10,15 @@
 
 <div class="center"><a href="#/">Home</a> | <a href="#/new-meal">New Meal</a> | <a href="#/my-earnings">My Earnings</a>
 </div>
-
-<div ng-view></div>
+<div class="animate-view-container">
+    <div class="slide-right" ng-view></div>
+</div>
 
 <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular-animate/angular-animate.min.js"></script>
+
 <script type="text/javascript" src="./app.js"></script>
-<link rel="stylesheet" href="./waitstaff.css"/>
+
 </body>
 </html>

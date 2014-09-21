@@ -40,4 +40,34 @@ input.ng-invalid.ng-dirty {
     border: 4px solid red;
 }
 
+.slide-right {
+    left: 0;
+}
 
+.slide-right.ng-enter {
+    transition: 0.10s linear all;
+    position: fixed;
+    z-index: inherit;
+    left: -100%;
+    height: inherit;
+}
+
+.slide-right.ng-leave {
+    transition: 0.10s linear all;
+    position: fixed;
+    z-index: 9999;
+    right: 0;
+}
+
+.slide-right.ng-leave-active {
+    transition: 0.10s linear all;
+    position: fixed;
+    right: -100%;
+    left: 100%;
+}
+
+.slide-right.ng-enter-active {
+    transition: 0.10s linear all;
+    left: 0;
+    position: relative;
+}
