@@ -1,0 +1,22 @@
+<div class="center">
+  Here's some interesting text.
+</div>
+<div class="center">
+  <input type="button" ng-click="get()" value="Browse Countries"/>
+
+  <div id="countries">
+    <table class="center" ng-if="geonames">
+      <th>Name</th>
+      <th>Country Code</th>
+      <th>Capital</th>
+      <th>Area in km2</th>
+      <th>Population</th>
+      <th>Continent</th>
+      <tbody>
+      <tr ng-repeat="country in geonames">
+        <td>{{country.countryName}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

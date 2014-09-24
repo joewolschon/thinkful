@@ -2,7 +2,7 @@
 <html lang='en' ng-app="countriesApp">
 <head>
     <!-- build:css ./_assets/combined.css -->
-    <link rel="stylesheet" type="text/css" href="countries-app.css" />
+    <link rel="stylesheet" type="text/css" href="./countries-app.css" />
     <!-- endbuild -->
     <meta charset='UTF-8' />
     <title>Countries and Capitals</title>
@@ -12,15 +12,20 @@
 <div class="center underline">
     <h1>Countries and Capitals</h1>
 </div>
+<a href="#!/countries">test</a>
 
 <div ng-view></div>
 
 <!-- build:js ./_assets/combined.js -->
-<script type="text/javascript" src="bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
-<script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script><script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
-<script type="text/javascript" src="countries-app.js"></script>
-
+<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="./bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="./bower_components/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="./bower_components/angular-resource/angular-resource.js"></script>
+<script type="text/javascript" src="./countries-app-views.js"></script>
+<script type="text/javascript" src="./countries/countries.js"></script>
+<script type="text/javascript" src="./home/home.js"></script>
+<script type="text/javascript" src="./components/geonames.js"></script>
+<script type="text/javascript" src="./components/countries-app.js"></script>
 <!-- endbuild -->
 </body>
 </html>
