@@ -11,7 +11,6 @@ views.controller('HomeCtrl', ['$scope', 'search', '$log', function ($scope, sear
   $scope.get = function () {
     search(undefined).then(function (data) {
       $scope.geonames = data.geonames;
-      $log.log('here');
       angular.forEach(data.geonames, function (val) {
         $log.log(val);
       });
