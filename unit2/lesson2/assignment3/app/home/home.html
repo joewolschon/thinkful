@@ -2,28 +2,5 @@
     Here's some interesting text.
 </div>
 <div class="center">
-    <input type="button" ng-click="get()" value="Browse Countries"/>
-
-    <div id="countries">
-        <table class="center" ng-if="geonames">
-
-            <th>Name</th>
-            <th>Country Code</th>
-            <th>Capital</th>
-            <th>Area in km2</th>
-            <th>Population</th>
-            <th>Continent</th>
-            <tr ng-class="{hover: hover}"
-                ng-mouseenter="hover = true"
-                ng-mouseleave="hover = false"
-                ng-repeat="country in geonames | orderBy:'countryName'">
-                <td>{{country.countryName}}</td>
-                <td>{{country.countryCode}}</td>
-                <td>{{country.capital}}</td>
-                <td>{{country.areaInSqKm}}</td>
-                <td>{{country.population | number}}</td>
-                <td>{{country.continent}}</td>
-            </tr>
-        </table>
-    </div>
+    <input ng-click="browseCountries()" type="button" value="Browse Countries"/>
 </div>

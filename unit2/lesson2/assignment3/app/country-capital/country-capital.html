@@ -1,0 +1,63 @@
+<div ng-class="{loading: !countryInfoFinished}">
+    <div class="center" ng-if="country">
+        <h1>{{country.isoAlpha3}}</h1>
+        <img class="center image"
+             ng-src="http://www.geonames.org/flags/x/{{country.countryCode | lowercase}}.gif"/>
+        <img class="center image"
+             ng-src="http://www.geonames.org/img/country/250/{{country.countryCode}}.png"/>
+
+
+        <div class="center">
+            <table class="center">
+                <tr>
+                    <td class="infoLabel">
+                        Population of Country:
+                    </td>
+                    <td>
+                        {{country.population | number}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="infoLabel">
+                        Area:
+                    </td>
+                    <td>
+                        {{country.areaInSqKm | number}} square km
+                    </td>
+                </tr>
+                <tr>
+                    <td class="infoLabel">
+                        Capital:
+                    </td>
+                    <td>
+                        {{capital.adminName1}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="infoLabel">
+                        Population of Capital:
+                    </td>
+                    <td>
+                        {{capital.population | number}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="infoLabel">
+                        {{neighbors.length}} neighbors:
+                    </td>
+                    <td>
+                    <span ng-repeat="neighbor in neighbors">
+                        <a ng-href="#/countries/{{neighbor.countryCode}}/capital">
+                            {{neighbor.countryName}}
+                        </a>{{$last ? '' : ', '}}
+                    </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="center buttons" ng-show="countryInfoFinished">
+        <input ng-click="home()" type="button" value="Home"/>
+        <input ng-click="browseCountries()" type="button" value="Browse Countries"/>
+    </div>
+</div>

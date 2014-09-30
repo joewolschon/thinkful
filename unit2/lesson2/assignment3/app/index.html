@@ -2,9 +2,9 @@
 <html lang='en' ng-app="countriesApp">
 <head>
     <!-- build:css ./_assets/combined.css -->
-    <link rel="stylesheet" type="text/css" href="./countries-app.css" />
+    <link rel="stylesheet" type="text/css" href="./countries-app.css"/>
     <!-- endbuild -->
-    <meta charset='UTF-8' />
+    <meta charset='UTF-8'/>
     <title>Countries and Capitals</title>
 </head>
 
@@ -12,9 +12,9 @@
 <div class="center underline">
     <h1>Countries and Capitals</h1>
 </div>
-<a href="#!/countries">test</a>
-
-<div ng-view></div>
+<div class="animate-view-container">
+    <div class="slide-right" ng-view></div>
+</div>
 
 <!-- build:js ./_assets/combined.js -->
 <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
@@ -24,7 +24,7 @@
 <script type="text/javascript" src="./countries-app-views.js"></script>
 <script type="text/javascript" src="./countries/countries.js"></script>
 <script type="text/javascript" src="./home/home.js"></script>
-<script type="text/javascript" src="./country-detail/country-detail.js"></script>
+<script type="text/javascript" src="country-capital/country-capital.js"></script>
 <script type="text/javascript" src="./components/geonames.js"></script>
 <script type="text/javascript" src="./components/countries-app.js"></script>
 <!-- endbuild -->

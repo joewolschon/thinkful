@@ -1,31 +1,28 @@
-angular.module('geonames', ['ngResource']).constant('GEONAMES_API', "http://api.geonames.org/:resource?")
+angular.module('geonames', ['ngResource'])
 
-    .factory('search', ['$resource', '$log', 'GEONAMES_API', function ($resource, $log, GEONAMES_API) {
-        $log.log(GEONAMES_API);
-        var Search = $resource(GEONAMES_API, {resource: 'search', username: 'jwolschon', type: 'JSON'}, {'get': {method: 'GET', cache: true}});
-        return function () {
-            return Search.get({resource: 'countryInfo'}).$promise;
+    .factory('geonamesApi', ['$resource', function ($resource) {
+        var GeonamesApi = $resource('http://api.geonames.org/:endPoint?', {username: 'jwolschon', type: 'JSON'}, {'get': {method: 'GET', cache: true}});
+
+        var request = function (endPoint, countryCode, params) {
+            var request = {
+                endPoint: endPoint,
+                country: countryCode
+            };
+
+            angular.extend(request, params);
+            return GeonamesApi.get(request).$promise;
+        };
+
+        return {
+            countries: request('countryInfo'),
+            countryInfo: function (countryCode) {
+                return request('countryInfo', countryCode)
+            },
+            neighbors: function (countryCode) {
+                return request('neighbours', countryCode)
+            },
+            capital: function (countryCode, capital) {
+                return request('search', countryCode, {isNameRequired: true, name_startsWith: capital, q: 'capital of a political entity'})
+            }
         }
-    }])
-    .factory('country', ['$resource', '$log', 'GEONAMES_API', function ($resource, $log, GEONAMES_API) {
-        $log.log(GEONAMES_API);
-        var Search = $resource(GEONAMES_API, {resource: 'search', username: 'jwolschon', type: 'JSON'});
-        return function (country) {
-            return Search.get({resource: 'countryInfo', country: country}).$promise;
-        }
-    }])
-    .factory('neighbors', ['$resource', '$log', 'GEONAMES_API', function ($resource, $log, GEONAMES_API) {
-        $log.log(GEONAMES_API);
-        var Search = $resource(GEONAMES_API, {resource: 'neighbours', username: 'jwolschon', type: 'JSON'});
-        return function (country) {
-            return Search.get({resource: 'neighbours', country: country}).$promise;
-        }
-    }])
-    .factory('capital', ['$resource', '$log', 'GEONAMES_API', function ($resource, $log, GEONAMES_API) {
-        $log.log(GEONAMES_API);
-        var Search = $resource(GEONAMES_API, {resource: 'search', username: 'jwolschon', type: 'JSON'});
-        return function (country, capital) {
-            return Search.get({resource: 'search', country: country, isNameRequired: true, name_startsWith: capital, q: 'capital of a political entity'}).$promise;
-        }
-    }])
-;
+    }]);

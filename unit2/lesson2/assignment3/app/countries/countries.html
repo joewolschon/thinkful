@@ -1,1 +1,24 @@
-<div>countries</div>
+<div class="center" ng-class="{loading: ajaxCallsFinished !== true}">
+    <div id="countries">
+        <table class="center" ng-if="countries">
+            <th>Name</th>
+            <th>Country Code</th>
+            <th>Capital</th>
+            <th>Area in km2</th>
+            <th>Population</th>
+            <th>Continent</th>
+            <tr ng-class="{hover: hover}"
+                ng-mouseenter="hover = true"
+                ng-mouseleave="hover = false"
+                ng-repeat="country in countries | orderBy:'countryName'"
+                ng-click="viewCountry(country.countryCode)">
+                <td>{{country.countryName}}</td>
+                <td>{{country.countryCode}}</td>
+                <td>{{country.capital}}</td>
+                <td>{{country.areaInSqKm}}</td>
+                <td>{{country.population | number}}</td>
+                <td>{{country.continent}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
