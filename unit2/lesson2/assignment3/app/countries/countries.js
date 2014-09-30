@@ -19,4 +19,8 @@ views.controller('CountriesCtrl', ['$scope', '$location', 'geonamesApi', functio
         $location.path('/countries/' + countryCode + '/capital');
     };
 
+    $scope.home = function () {
+        $location.path('/');
+    };
+
 }]);
