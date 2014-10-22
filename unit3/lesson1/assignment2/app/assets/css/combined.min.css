@@ -1,0 +1,27 @@
+/* Include this file in your html if you are using the CSP mode. */
+
+@charset "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+
+ng\:form {
+  display: block;
+}
+
+.section{
+	display:inline-block;
+}
+
+.section div{
+	text-align:start;
+}
+
+.brand-logo{
+	width:220px;
+	height:180px;
+	background-image:url('/opt-in/assets/css/images/logo.jpeg');
+}

@@ -1,0 +1,13 @@
+.section{
+	display:inline-block;
+}
+
+.section div{
+	text-align:start;
+}
+
+.brand-logo{
+	width:220px;
+	height:180px;
+	background-image:url('/opt-in/assets/css/images/logo.jpeg');
+}
