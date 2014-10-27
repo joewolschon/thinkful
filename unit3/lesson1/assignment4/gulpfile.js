@@ -12,7 +12,7 @@ var paths = {
     '!*.js', 'app/**/*.js', '!**/*.min.js', '!app/bower_components/**/*.js'
   ],
   css: [
-    'app/**/*.css', '!**/*.min.css'
+    'app/**/*.css', '!**/*.min.css', '!app/bower_components/**/*.css'
   ]
 };
 
