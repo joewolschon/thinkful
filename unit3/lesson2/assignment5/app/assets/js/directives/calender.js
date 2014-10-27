@@ -14,7 +14,6 @@ angular.module('app').directive('calender', function ($log) {
         $scope.calendar.year = date.year();
 
         $scope.range = CalendarRange.getMonthlyRange(date.toDate());
-        $log.log(date);
       };
 
       init();
