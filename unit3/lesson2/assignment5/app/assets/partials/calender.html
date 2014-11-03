@@ -1,2 +1,8 @@
-<select month-options ng-model="calendar.month"></select>
-<select year-options ng-model="calendar.year"></select>
+<div id="control">
+    <select month-options ng-model="calendar.month"></select>
+    <select year-options ng-model="calendar.year"></select>
+</div>
+<div id="calendar-body">
+    <div class="buffer"></div>
+    <div class="day" ng-repeat="day in range.days" day="day"></div>
+</div>

@@ -1,6 +1,4 @@
-angular.module('app').directive('calender', function ($log) {
-
-
+angular.module('app').directive('calender', function () {
   return {
     restrict: 'A',
     templateUrl: 'assets/partials/calender.html',
@@ -17,16 +15,25 @@ angular.module('app').directive('calender', function ($log) {
       };
 
       init();
-    },
-    compile: function (elem) {
-//
-//      var options = '';
-//
-//      angular.forEach(months, function(month) {
-//        options = options + '<option value="' + month.value + '">' + month.key + '</option>';
-//      });
-//
-//      elem.append(options);
+
+      $scope.$watch('calendar.month', function(value) {
+        if (date) {
+          date.set('month', value - 1);
+          $scope.range = CalendarRange.getMonthlyRange(date.toDate());
+        }
+      });
+
+      $scope.$watch('calendar.year', function(value) {
+        if (date) {
+          date.set('year', value);
+          $scope.range = CalendarRange.getMonthlyRange(date.toDate());
+        }
+      });
+
+      this.getRange = function()
+      {
+        return $scope.range;
+      };
     }
   };
 });
