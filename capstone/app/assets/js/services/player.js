@@ -4,7 +4,8 @@
 angular.module('app').service('player', function ($rootScope, $timeout, $log) {
   var mokb = 9251246;
   var gvb = 496642;
-  var users = [gvb, mokb];
+  var pitchfork = 175182;
+  var users = [gvb, mokb, pitchfork];
 
   var trackIds = [];
   var currentTrack = null;
@@ -66,16 +67,14 @@ angular.module('app').service('player', function ($rootScope, $timeout, $log) {
     $log.log(trackIds.length);
     var index = Math.floor(Math.random() * (trackIds.length - 1));
     var trackId = trackIds[index];
+
     SC.get('/tracks/' + trackId, function (track) {
       currentTrack = track;
       $rootScope.$apply();
       SC.stream(currentTrack.stream_url, options, function (soundManagerObj) {
         soundManager = soundManagerObj;
         soundManager.play();
-      }, function(test)
-      {
-        $log.log('test',test);
-      });
+      }, playNext);
     });
   };
 
