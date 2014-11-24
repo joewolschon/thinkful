@@ -1,6 +1,13 @@
-<div ng-if="track">
-  Currently Playing: {{currentPosition}} - {{track.title}}
+<!--<div class="track" ng-if="track">-->
+<!--{{track.title | lowercase}} {{left}} - {{right}}-->
+<!--</div>-->
+<div class="controls g-z-index-header">
+  <div class="track">
+    <!--<input ng-class="{play: !playing, pause: playing}" type="button" ng-click="play()"/>-->
+    {{track? track.title : 'finding songs' | lowercase}}
+  </div>
+
+  <!--<input type="button" value="STOP" ng-click="stop()"/>-->
 </div>
-<div>
-<input type="button" value="PLAY" ng-click="play()"/> <input type="button" value="STOP" ng-click="stop()"/>
-</div>
+
+
