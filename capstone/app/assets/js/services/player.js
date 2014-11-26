@@ -1,11 +1,11 @@
 /**
  * @author Joseph Wolschon <joseph.wolschon@gmail.com>
  */
-angular.module('app').service('player', function ($rootScope, $timeout, $log) {
+angular.module('app').service('player', function ($rootScope) {
   var mokb = 9251246;
   var gvb = 496642;
   var pitchfork = 175182;
-  var users = [gvb, mokb, pitchfork];
+  var users = [gvb, mokb];
 
   var trackIds = [];
   var currentTrack = null;
@@ -21,7 +21,7 @@ angular.module('app').service('player', function ($rootScope, $timeout, $log) {
   var addTrack_ = function (id) {
     trackIds.push(id);
 
-    if (trackIds.length > 10 && loaded === false) {
+    if (trackIds.length > 5 && loaded === false) {
       loaded = true;
       $rootScope.$apply();
     }
@@ -64,11 +64,15 @@ angular.module('app').service('player', function ($rootScope, $timeout, $log) {
    * @private
    */
   var playNext = function () {
-    $log.log(trackIds.length);
+
     var index = Math.floor(Math.random() * (trackIds.length - 1));
     var trackId = trackIds[index];
 
     SC.get('/tracks/' + trackId, function (track) {
+      if (track.errors && track.errors.length > 0) {
+        playNext();
+        return;
+      }
       currentTrack = track;
       $rootScope.$apply();
       SC.stream(currentTrack.stream_url, options, function (soundManagerObj) {
