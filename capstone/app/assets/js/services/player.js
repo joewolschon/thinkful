@@ -73,12 +73,17 @@ angular.module('app').service('player', function ($rootScope) {
         playNext();
         return;
       }
-      currentTrack = track;
-      $rootScope.$apply();
-      SC.stream(currentTrack.stream_url, options, function (soundManagerObj) {
-        soundManager = soundManagerObj;
-        soundManager.play();
-      }, playNext);
+      if(track.streamable && track.stream_url) {
+        currentTrack = track;
+        $rootScope.$apply();
+        SC.stream(currentTrack.stream_url, options, function (soundManagerObj) {
+          soundManager = soundManagerObj;
+          soundManager.play();
+        }, playNext);
+      }else{
+        playNext();
+        return;
+      }
     });
   };
 
