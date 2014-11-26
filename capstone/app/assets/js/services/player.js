@@ -21,7 +21,7 @@ angular.module('app').service('player', function ($rootScope) {
   var addTrack_ = function (id) {
     trackIds.push(id);
 
-    if (trackIds.length > 5 && loaded === false) {
+    if (trackIds.length > 50 && loaded === false) {
       loaded = true;
       $rootScope.$apply();
     }
