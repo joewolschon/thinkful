@@ -28,7 +28,7 @@ angular.module('app').directive('currentTrack', function (player, ngProgress, $l
         }
       };
 
-      $scope.$watch(player.tracksLoaded, function (loaded) {
+      $scope.$watch(player.tracksLoaded_, function (loaded) {
         if (loaded && !playing) {
           playing = true;
           player.start(whilePlaying);

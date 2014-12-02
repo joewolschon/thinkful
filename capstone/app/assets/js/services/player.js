@@ -1,4 +1,5 @@
 /**
+ * Service for finding and playing soundcloud songs.
  * @author Joseph Wolschon <joseph.wolschon@gmail.com>
  */
 angular.module('app').service('player', function ($rootScope) {
@@ -18,8 +19,7 @@ angular.module('app').service('player', function ($rootScope) {
      * @param id of the track
      * @private
      */
-    var addTrack_ = function (id) {
-        trackIds.push(id);
+    var addTrack = function (id) {
 
         if (trackIds.length > 50 && loaded === false) {
             loaded = true;
@@ -34,10 +34,10 @@ angular.module('app').service('player', function ($rootScope) {
      * @param id of the playlist
      * @private
      */
-    var addPlayList_ = function (id) {
+    var addPlayList = function (id) {
         return SC.get('/playlists/' + id, function (playlist) {
             angular.forEach(playlist.tracks, function (track) {
-                addTrack_(track.id);
+                addTrack(track.id);
             });
         })
     };
@@ -47,11 +47,11 @@ angular.module('app').service('player', function ($rootScope) {
      * tracks to play. TODO: future add more users, find similar new songs using the playlists as a base
      * @private
      */
-    var setSongs_ = function () {
+    var setSongs = function () {
         angular.forEach(users, function (user) {
             SC.get('/users/' + user + '/playlists', function (playlists) {
                 angular.forEach(playlists, function (playlist) {
-                    addPlayList_(playlist.id);
+                    addPlayList(playlist.id);
                 });
             });
         });
@@ -73,7 +73,7 @@ angular.module('app').service('player', function ($rootScope) {
             // Grab another song if there's issues with this one.
             if (track === null
                 || (track.errors && track.errors.length > 0)
-                || !track.streamable || track.stream_url === null) {
+                || !track.streamable || track.stream_url === null || !angular.isDefined(track.stream_url)) {
                 playNext();
                 return;
             }
@@ -119,11 +119,11 @@ angular.module('app').service('player', function ($rootScope) {
     };
 
     /**
-     * @returns {boolean} true if we have at least 1 track to play, otherwise false
+     * @returns {boolean} true if we have some tracks to play
      */
-    this.tracksLoaded = function () {
+    this.tracksLoaded_ = function () {
         return loaded;
     };
 
-    setSongs_();
+    setSongs();
 });
