@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 
 var paths = {
   js: [
-    '!*.js', 'app/**/*.js', '!**/*.min.js', '!app/bower_components/**/*.js'
+    '!*.js', 'app/**/*.js', '!**/*.min.js', '!app/bower_components/**/*.js', '!app/vendor/*.js'
   ],
   css: [
     'app/**/*.css', '!**/*.min.css'
