@@ -293,17 +293,20 @@ DAT.Globe = function(container, colorFn) {
   } // end init()
 
 
-  this.addMarker = function(title, artist, song, location, lat, lon)
-  {
+  this.addMarker = function (title, artist, song, location, lat, lon) {
     console.log(title, artist, song, location, lat, lon);
-    if(lat && lon) {
-      var marker = {"name": title+" - "+location, "coords": [parseFloat(lat), parseFloat(lon)]};
-      createMark(marker, transform);
-      console.log(marker);
-      locations.push(marker);
-      currentLocation = marker;
-      gotoLocation(currentLocation);
+    lat = lat ? lat : 0.00;
+    lon = lon ? lon : 0.00;
+    if (lat === 0.00 && lon === 0.00) {
+      location = 'unknown';
     }
+    var marker = {"name": title + " - " + location, "coords": [parseFloat(lat), parseFloat(lon)]};
+    createMark(marker, transform);
+    console.log(marker);
+    locations.push(marker);
+    currentLocation = marker;
+    gotoLocation(currentLocation);
+
   };
 
 

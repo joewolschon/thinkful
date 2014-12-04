@@ -4,10 +4,11 @@
  */
 angular.module('app').directive('globe', function(echonestApi, player, $log){
 //<div ng-if="artistLocation[\'location\'] != null" class="coords">{{artistLocation}}</div>
+  //<div ng-if="artistLocation[\'location\'] == null" class="coords">no location</div>
    return {
      restrict : 'E',
      scope: true,
-     template: '<div ng-if="artistLocation[\'location\'] == null" class="coords">no location</div>',
+     template: '',
      controller: function($scope)
      {
 
