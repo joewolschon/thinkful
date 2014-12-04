@@ -110,6 +110,7 @@ angular.module('app').service('player', function ($rootScope) {
   this.start = function (whilePlaying) {
     options = {
       onfinish: playNext,
+      onstop: playNext,
       whileplaying: whilePlaying,
       usePeakData: true,
       useWaveformData: true,
@@ -117,6 +118,33 @@ angular.module('app').service('player', function ($rootScope) {
       onload: checkForValidStream
     };
     playNext();
+  };
+
+  /**
+   * Resume the track.
+   */
+  this.resume = function () {
+    if (soundManager) {
+      soundManager.resume();
+    }
+  };
+
+  /**
+   *Pause the track.
+   */
+  this.pause = function () {
+    if (soundManager) {
+      soundManager.pause();
+    }
+  };
+
+  /**
+   * Stop the current track and play the next.
+   */
+  this.next = function () {
+    if (soundManager) {
+      soundManager.stop();
+    }
   };
 
   /**

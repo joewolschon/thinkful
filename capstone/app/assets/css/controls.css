@@ -1,0 +1,9 @@
+.controls {
+	float:right;
+	margin-right: 10px;
+}
+
+.controls input[type='button']
+{
+	background-color:#d3d3d3;
+}

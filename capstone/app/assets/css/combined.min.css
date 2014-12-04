@@ -1,6 +1,15 @@
 body {
 	background-color: black;
 }
+.controls {
+	float:right;
+	margin-right: 10px;
+}
+
+.controls input[type='button']
+{
+	background-color:#d3d3d3;
+}
 .track {
 	font: arial, sans-serif;
 	font-weight: bold;
