@@ -5,7 +5,7 @@
 angular.module('app').directive('currentTrack', function (player, ngProgress, $log) {
 
   // Process bar styling. TODO: not sure if I'm going to keep this...
-  ngProgress.color('white');
+  ngProgress.color('lightgray');
   ngProgress.height('7px');
 
   return {

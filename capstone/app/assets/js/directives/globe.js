@@ -3,11 +3,11 @@
  * @author Joseph Wolschon <jwolschon@payjunciton.com
  */
 angular.module('app').directive('globe', function(echonestApi, player, $log){
-  //<span class="span">{{artistName}}</span><span class="coords"> {{title}}</span>
+//<div ng-if="artistLocation[\'location\'] != null" class="coords">{{artistLocation}}</div>
    return {
      restrict : 'E',
      scope: true,
-     template: '<div class="coords">{{artistLocation}}</div>',
+     template: '<div ng-if="artistLocation[\'location\'] == null" class="coords">no location</div>',
      controller: function($scope)
      {
 
@@ -44,6 +44,7 @@ angular.module('app').directive('globe', function(echonestApi, player, $log){
                scope.artistName = songs[0].artist_name;
                scope.title = songs[0].title;
                scope.artistLocation = songs[0].artist_location;
+               globe.addMarker(track.title, scope.artistName, scope.title,scope.artistLocation['location'], scope.artistLocation['latitude'], scope.artistLocation['longitude'])
              }else{
                $log.log('no songs');
              }
